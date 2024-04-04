@@ -58,39 +58,5 @@ public class qBay{
             System.out.println("Menu: \n 1.Buy \n 2.Sell \n 3.Cart \n 4.Logout");
         }
 
-      /*   while(loggedIn = false){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter your username: ");
-        String username1 = scanner.next();
-        System.out.println("Please enter your password: ");
-        String password = scanner.next();
-
-        if(username == userOne){
-            if(password == passwordOne){
-                loggedIn = true;
-                System.out.println("logged in!");
-            }else{
-                loginTryCount++;
-                System.out.println("Incorrect: please try again.");
-            }
-        }else if(username == userTwo){
-            if(password == passwordTwo){
-                System.out.println("logged in!");
-                loggedIn = true;
-            }else{
-                loginTryCount++;
-                System.out.println("Incorrect: please try again.");
-            }
-        }else if(username == userThree){
-            if(password == passwordThree){
-                System.out.println("logged in!");
-                loggedIn = true;
-            }else{
-                loginTryCount++;
-                System.out.println("Incorrect: please try again.");
-            }
-        }
-
-    }*/
     }
 }
