@@ -1,6 +1,9 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class qBay {
+
+    ArrayList<String[]> sellItems = new ArrayList<>();
     private static String[][] items = { { "T-shirt", "clothes", "John", "Stan", "John.Stan@quinnipiac.edu", "12.00" },
             { "Tent", "camping", "Adrian", "Smith", "Adrian.Smith@quinnipiac.edu", "100.00" },
             { "Dress", "clothes", "Ann", "Rossi", "Ann.Rossi@quinnipiac.edu", "50.00" },
@@ -8,6 +11,8 @@ public class qBay {
             { "Dog Toy", "pets", "Rivera", "Owens", "Rivera.Owens@quinnipiac.edu", "12.00" } };
 
     public static void main(String[] args) {
+        qBay qbay = new qBay();
+
         // Users for login
         String userOne = "taylor.lea@quinnipiac.edu";
         String passwordOne = "password1";
@@ -61,8 +66,27 @@ public class qBay {
         }
 
         if (loggedIn = true) {
-            System.out.println("Menu: \n 1.Buy \n 2.Sell \n 3.Cart \n 4.Logout");
-            buy();
+            qbay.menu();
+        }
+    }
+
+    public void menu() {
+        System.out.println("Menu: \n 1. Buy \n 2. Sell \n 3. Cart \n 4. Logout");
+
+        Scanner scan = new Scanner(System.in);
+
+        int choice = scan.nextInt();
+
+        if (choice == 1) {
+            // buy
+        } else if (choice == 2) {
+            sell();
+        } else if (choice == 3) {
+            // cart
+        } else if (choice == 4) {
+            // logout
+        } else {
+            System.out.println("Invalid choice selection 1, please try again");
         }
 
     }
@@ -71,7 +95,7 @@ public class qBay {
         Scanner scan = new Scanner(System.in);
         String userInput;
         for (int i = 0; i < items.length; i++) {
-            System.out.println((i+1) + " " + items[i][0]);
+            System.out.println((i + 1) + " " + items[i][0]);
         }
         userInput = scan.nextLine();
         for (int i = 0; i < items.length; i++) {
@@ -80,7 +104,52 @@ public class qBay {
                     System.out.println(items[i][j]);
                 }
             }
+
         }
 
+        scan.close();
+    }
+
+    public void sell() {
+        System.out.println("Welcome to the sell page!!");
+        System.out.println("Menu: \n 1. View current items \n 2. Add new item \n 3. Return to menu");
+
+        Scanner scan = new Scanner(System.in);
+
+        int choice = scan.nextInt();
+
+        if (choice == 1) {
+            System.out.println("Current listed items: " + sellItems.size());
+
+            for (int i = 0; i < sellItems.size(); i++) {
+                String[] item = sellItems.get(i);
+
+                for (int j = 0; j < item.length; j++) {
+                    System.out.print(item[j] + " ");
+                }
+                System.out.println();
+            }
+
+            sell();
+        } else if (choice == 2) {
+            System.out.println("Please enter the following information about the item you wish to sell.");
+            System.out.println("Name: ");
+            String name = scan.next();
+            System.out.println("Category: ");
+            String category = scan.next();
+            System.out.println("Price: ");
+            String price = scan.next();
+
+            String[] item = { name, category, price };
+
+            sellItems.add(item);
+
+            sell();
+        } else if (choice == 3) {
+            menu();
+        } else {
+            System.out.println("Invalid choice selection 2, please try again");
+        }
+        scan.close();
     }
 }
