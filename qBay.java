@@ -1,11 +1,11 @@
 import java.util.Scanner;
 
 public class qBay {
-    static String[][] items = { { "T-shirt", "clothes", "John", "Stan", "John.Stan@quinnipiac.edu", "$12.00" },
-            { "name of item", "category", "first name", "last name", "email", "price" },
-            { "name of item", "category", "first name", "last name", "email", "price" },
-            { "name of item", "category", "first name", "last name", "email", "price" },
-            { "name of item", "category", "first name", "last name", "email", "price" } };
+    private static String[][] items = { { "T-shirt", "clothes", "John", "Stan", "John.Stan@quinnipiac.edu", "12.00" },
+            { "Tent", "camping", "Adrian", "Smith", "Adrian.Smith@quinnipiac.edu", "100.00" },
+            { "Dress", "clothes", "Ann", "Rossi", "Ann.Rossi@quinnipiac.edu", "50.00" },
+            { "Basketball", "sports", "Mark", "Ross", "Mark.Ross@quinnipiac.edu", "10.00" },
+            { "Dog Toy", "pets", "Rivera", "Owens", "Rivera.Owens@quinnipiac.edu", "12.00" } };
 
     public static void main(String[] args) {
         // Users for login
@@ -62,6 +62,7 @@ public class qBay {
 
         if (loggedIn = true) {
             System.out.println("Menu: \n 1.Buy \n 2.Sell \n 3.Cart \n 4.Logout");
+            buy();
         }
 
     }
@@ -70,7 +71,7 @@ public class qBay {
         Scanner scan = new Scanner(System.in);
         String userInput;
         for (int i = 0; i < items.length; i++) {
-            System.out.println(items[i][0]);
+            System.out.println((i+1) + " " + items[i][0]);
         }
         userInput = scan.nextLine();
         for (int i = 0; i < items.length; i++) {
