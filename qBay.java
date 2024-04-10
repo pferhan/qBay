@@ -89,6 +89,9 @@ public class qBay {
             // cart
         } else if (choice == 4) {
             // logout
+            System.out.println("Thank you for shopping at Qbay!");
+            System.out.println("You have been logged out");
+            System.out.println("\n  ________                  ._____________               \n /  _____/  ____   ____   __| _/\\______   \\___.__. ____  \n/   \\  ___ /  _ \\ /  _ \\ / __ |  |    |  _<   |  |/ __ \\ \n\\    \\_\\  (  <_> |  <_> ) /_/ |  |    |   \\\\___  \\  ___/ \n \\______  /\\____/ \\____/\\____ |  |______  // ____|\\___  >\n        \\/                   \\/         \\/ \\/         \\/ \n");
         } else {
             System.out.println("Invalid choice selection 1, please try again");
         }
