@@ -4,13 +4,12 @@ import java.util.Scanner;
 public class qBay {
 
     ArrayList<String[]> sellItems = new ArrayList<>();
-    private static String[][] itemsToBuy = { { "T-shirt", "clothes", "John", "Stan", "John.Stan@quinnipiac.edu", "12.00" },
-            { "Tent", "camping", "Adrian", "Smith", "Adrian.Smith@quinnipiac.edu", "100.00" },
-            { "Dress", "clothes", "Ann", "Rossi", "Ann.Rossi@quinnipiac.edu", "50.00" },
-            { "Basketball", "sports", "Mark", "Ross", "Mark.Ross@quinnipiac.edu", "10.00" },
-            { "Toy", "pets", "Rivera", "Owens", "Rivera.Owens@quinnipiac.edu", "12.00" } };
+    private static String[][] itemsToBuy = { { "T-shirt", "clothes", "John", "Stan", "John.Stan@quinnipiac.edu", "12" },
+            { "Tent", "camping", "Adrian", "Smith", "Adrian.Smith@quinnipiac.edu", "100" },
+            { "Dress", "clothes", "Ann", "Rossi", "Ann.Rossi@quinnipiac.edu", "50" },
+            { "Basketball", "sports", "Mark", "Ross", "Mark.Ross@quinnipiac.edu", "10" },
+            { "Toy", "pets", "Rivera", "Owens", "Rivera.Owens@quinnipiac.edu", "12" } };
     
-    //feel free to change this if needed
     ArrayList<String[]> cart = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -87,6 +86,7 @@ public class qBay {
             sell();
         } else if (choice == 3) {
             // cart
+            cart();
         } else if (choice == 4) {
             // logout
             System.out.println("Thank you for shopping at Qbay!");
@@ -96,6 +96,51 @@ public class qBay {
             System.out.println("Invalid choice selection 1, please try again");
         }
 
+    }
+
+    public void cart() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Welcome to the cart page!");
+        System.out.println("Items in cart: " + cart.size());
+        int totalPrice = 0;
+        int choice;
+        for (int i = 0; i < cart.size(); i++) {
+            String[] item = cart.get(i);
+            System.out.println("Item: " + item[0]);
+            System.out.println("Price: " + item[5]);
+            totalPrice = totalPrice + Integer.parseInt(item[5]);
+        }
+
+        System.out.println("The total price is: " + totalPrice);
+        System.out.println("What would you like to do?");
+        System.out.println("Menu: \n1. Purchase items \n2. Remove items \n3. Return to menu");
+        choice = scan.nextInt();
+        if(choice == 1) {
+            if(cart.size() > 0) {
+                System.out.println("The items have been purchased");
+                cart = new ArrayList<>();
+            } else {
+                System.out.println("There are no items in your cart!");
+            }
+            cart();
+        } else if(choice == 2) {
+            String[][] tempArray = new String[cart.size() + itemsToBuy.length][6];
+            for(int i=0; i < cart.size(); i++) {
+                tempArray[i] = cart.get(i);
+            }
+            for(int j=0; j < itemsToBuy.length; j++) {
+                tempArray[j + cart.size()] = itemsToBuy[j];
+            }
+            itemsToBuy = tempArray;
+            cart = new ArrayList<>();
+            System.out.println("The items have been removed");
+            cart();
+        } else if(choice == 3) {
+            menu();
+        } else {
+            System.out.println("Not a valid option");
+            cart();
+        }
     }
 
     public void buy() {
@@ -134,12 +179,8 @@ public class qBay {
                 userInput = scan.nextLine();
                 if(userInput.toLowerCase().equals("yes")) {
                     System.out.println(itemToBuy + " has been added to your cart.");
-                    //would add to the list created for the checkout function here
-                    //feel free to change this part if needed
                     String[] item = { itemsToBuy[i][0], itemsToBuy[i][1], itemsToBuy[i][2], itemsToBuy[i][3], itemsToBuy[i][4], itemsToBuy[i][5] };
                     cart.add(item);
-                    
-
                     String[][] tempArray = new String[itemsToBuy.length-1][6];
                     int itemsToBuyIndex = 0;
                     for(int j=0; j < tempArray.length;) {
